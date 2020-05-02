@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/ >
+		<title>Smoothed D3.js Radar Chart</title>
+
+		<!-- Google fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300" rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+		<!-- D3.js -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+		
+		<style>
+			body {
+				font-family: 'Open Sans', sans-serif;
+				font-size: 12px;
+				font-weight: 300;
+				fill: #242424;
+				text-align: center;
+				text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+				cursor: default;
+			}
+			
+			.legend {
+				font-family: 'Raleway', sans-serif;
+				fill: #333333;
+			}
+			
+			.tooltip {
+				fill: #333333;
+			}
+		</style>
+	
+	</head>
+	<body>
+
+		<div class="radarChart"></div>
+
+		<script src="radarChart.js"></script>	
+		<script>
+      
+
+			var margin = {top: 100, right: 100, bottom: 100, left: 100},
+				width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
+				height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
+
+					
+// Data
+// Defination:
+// Breeding in Captivity or Artificial Propagation	2
+// Circus or Traveling Exhibition	14
+// Commercial	14
+// Educational 	7
+// Personal	4
+// Scientific	1
+// Zoo	25
+
+// 
+			var data = [
+					  [//Rhino 
+						{axis:"Educational",value:0.07},
+						{axis:"Breeding in Captivity or Artificial Propagation",value:0.02},
+						{axis:"Social(Zoo)",value:0.25},
+						{axis:"Aristic(Circus or Traveling Exibition)",value:0.14},
+						
+						{axis:"Scientific",value:0.01},
+						
+						{axis:"Medical",value:0},	
+						{axis:"Hunting Trophy",value:0},
+						{axis:"Law Enforcement", value: 0}
+					  ],
+// Gator	Breeding in Captivity or Artificial Propagation	38
+// Circus or Traveling Exhibition	968
+// Commercial	5,783,242
+// Educational 	106
+// Hunting Trophy	138
+// Law Enforcement / Judicial / Forensic	6
+// Medical (Including Biomedical Research)	548
+// Personal	85,444
+// Scientific	266
+// Zoo	98
+					  [//Gator 
+						{axis:"Educational",value:1.06},
+						{axis:"Breeding in Captivity or Artificial Propagation",value:0.38},
+						{axis:"Social(Zoo)",value:0.98},
+						{axis:"Aristic(Circus or Traveling Exibition)",value:9.68},
+						
+						{axis:"Scientific",value:2.66},
+						
+						{axis:"Medical",value:5.48},
+						{axis:"Hunting Trophy",value:1.38},
+						{axis:"Law Enforcement", value: 0.06}			
+					  ],
+// Python Breeding in Captivity or Artificial Propagation	112
+// Circus or Traveling Exhibition	1,640
+// Commercial	3,052,628
+// Educational 	100
+// Hunting Trophy	24
+// Law Enforcement / Judicial / Forensic	4
+// Medical (Including Biomedical Research)	16
+// Personal	99,752
+// Scientific	308
+// Zoo	180
+
+					  [//Python
+						{axis:"Educational",value:1.00},
+						{axis:"Breeding in Captivity or Artificial Propagation",value:1.12},
+						{axis:"Social(Zoo)",value:1.80},
+						{axis:"Aristic(Circus or Traveling Exibition)",value:16.40},
+				
+						{axis:"Scientific",value:3.08},
+						
+						{axis:"Medical",value:0.16},
+						{axis:"Hunting Trophy",value:0.24},
+						{axis:"Law Enforcement", value: 0.04},			
+					  ],
+// Breeding in Captivity or Artificial Propagation	246
+// Circus or Traveling Exhibition	228
+// Commercial	157,440
+// Educational 	144
+// Hunting Trophy	18
+// Introduction or Reintroduction into the Wild	24
+// Medical (Including Biomedical Research)	693,354
+// Personal	156
+// Scientific	136,626
+// Zoo	138
+					  [//Monkey
+						{axis:"Educational",value:1.44},
+						{axis:"Breeding in Captivity or Artificial Propagation",value:2.46},
+						{axis:"Social(Zoo)",value:1.38},
+						{axis:"Aristic(Circus or Traveling Exibition)",value:2.28},
+				
+						{axis:"Scientific",value:13.66},
+						
+						{axis:"Medical",value:19.33},
+						{axis:"Hunting Trophy",value:0.18},
+						{axis:"Law Enforcement", value: 0},			
+					  ],
+
+					];
+// Draw the Chart  
+
+			var color = d3.scale.ordinal()
+				.range(["#EDC951","#CC333F","#00A0B0"]);
+				
+			var radarChartOptions = {
+			  w: width,
+			  h: height,
+			  margin: margin,
+			  maxValue: 20,
+			  levels: 5,
+			  roundStrokes: true,
+			  color: color
+			};
+			//Call function to draw the Radar chart
+			RadarChart(".radarChart", data, radarChartOptions);
+		</script>
+	</body>
+</html>
